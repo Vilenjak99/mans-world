@@ -1,0 +1,15 @@
+<div fxLayout="{{orientation}}" fxLayoutAlign="{{xElPos}} {{yElPos}}" fxLayoutGap="{{spacingBetwElements}}px">
+    <ng-template ngFor let-element [ngForOf]="navElements">
+        <a  (click)="emitterEmit();" fxLayoutAlign="start center"  *ngIf="element.title != 'add product' || !!userSingedIn" [routerLink]="'/' + element.title" routerLinkActive="active">          
+            <button *ngIf="orientation==='column' || xElPos == 'end'" mat-icon-button >
+                <mat-icon  >{{element.img}}</mat-icon> 
+            </button>
+            <div *ngIf="xElPos != 'end'" >
+                {{element.title|uppercase}}
+            </div> 
+        </a>
+    </ng-template>          
+</div>
+
+
+    

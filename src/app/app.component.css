@@ -1,0 +1,33 @@
+#container{
+    height: 100%;
+}
+.item{
+    padding: 0.23em;
+}
+.item:hover{
+    background-color: rgb(233, 232, 232);;
+}
+mat-sidenav-container{
+    height: 100%;
+}
+mat-sidenav{
+    width: fit-content;
+}
+#menu-button{
+    background-color: transparent;
+    border-style: none;
+}
+a{
+    color: rgba(0, 0, 0, 0.775);
+}
+.routerComponentDiv{
+    background-color: rgb(255, 249, 240);
+    padding: 0.5rem;
+    width: 94%;
+    margin: auto;
+}
+
+#nav{
+    width: 100%;
+}
+

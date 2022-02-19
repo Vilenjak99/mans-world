@@ -1,0 +1,62 @@
+<div fxLayout="column">
+    <form [formGroup]="formTemplate" #f="ngForm" (ngSubmit)="advancedSearch(f)">
+        <div fxLayout="column" class="section">
+            <h4>Keywords selection</h4>
+                <mat-form-field>
+                    <mat-label>Keywords</mat-label>
+                    <mat-chip-list  #chipList aria-label="Keywords selection">
+                        <mat-chip *ngFor="let word of keywords" [selectable]="selectable"
+                                [removable]="removable" (removed)="remove(word)">
+                            {{word}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input formControlName="keywords"  placeholder="New keyword..."
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+        </div>
+    
+        <div fxLayout="column" class="section">
+            <h4>Condition</h4>
+            <mat-form-field >
+                <mat-label>Condition</mat-label>
+                <mat-select formControlName="condition" ngModel >
+                    <mat-option  *ngFor="let type of conditions" [value]="type" >
+                    {{type|titlecase}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>  
+        </div>
+        <div fxLayout="column" class="section">
+            <h4>Free shipping</h4>
+            <mat-checkbox formControlName="freeShipping" ngModel ></mat-checkbox>  
+        </div>
+        <div fxLayout="column" class="section">
+            <h4>Sort by</h4>
+            <mat-form-field >
+                <mat-label>Sort by</mat-label>
+                <mat-select formControlName="sortBy" ngModel >
+                    <mat-option  *ngFor="let type of sortingType" [value]="type" >
+                    {{type|titlecase}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" class="section">
+            <h4>Price</h4>
+            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start end">
+                <mat-form-field>
+                    <input formControlName="priceFrom" ngModel matInput min="0" placeholder="from" type="number" > 
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="priceTo" ngModel matInput min="0" placeholder="to" type="number">
+                </mat-form-field>
+            </div>  
+        </div>
+        <button type="submit"  mat-raised-button color="accent" >SEARCH</button>
+    </form>
+    
+</div>

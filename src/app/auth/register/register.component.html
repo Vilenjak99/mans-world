@@ -1,0 +1,82 @@
+<section>
+    <form #f="ngForm" (ngSubmit)="register()" fxLayout="column" fxLayoutAlign="center center">
+        <h1>Register</h1>
+        <mat-form-field class="authInputs">
+            <input 
+            type="text" 
+            ngModel 
+            matInput 
+            placeholder="Firstname" 
+            required
+            name="surname"
+            >
+        </mat-form-field>
+        <mat-form-field class="authInputs">
+            <input 
+            type="text" 
+            ngModel 
+            matInput 
+            placeholder="Lastname" 
+            required
+            name="lastname"
+            >
+        </mat-form-field>
+        <mat-form-field class="authInputs">
+            <input 
+            type="text" 
+            ngModel 
+            matInput 
+            placeholder="Username" 
+            required
+            name="username"
+            >
+        </mat-form-field>
+        <mat-form-field class="authInputs">
+            <input 
+            type="email" 
+            ngModel 
+            matInput 
+            placeholder="Email" 
+            email
+            required
+            name="email"
+            >
+        </mat-form-field>
+
+        <mat-form-field class="authInputs">
+            <input 
+            matInput
+            placeholder="Password"
+            ngModel
+            required
+            minlength="6"
+            name="password"
+            [type]="hide ? 'password' : 'text'"
+            >
+            <button 
+            mat-icon-button 
+            matSuffix 
+            (click)="hide = !hide" 
+            [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="authInputs">
+            <input 
+            type="tel" 
+            ngModel 
+            matInput 
+            placeholder="Phone number" 
+            required
+            name="phoneNumber"
+            >
+        </mat-form-field>
+
+        <button type="submit" [disabled]='!f.valid'  mat-raised-button color="accent" >REGISTER</button>
+        <div>
+            <span>Want to go back to </span>
+            <a href=""  [routerLink]="'../'+'login'">Log in</a>?
+        </div>
+    </form>
+</section>

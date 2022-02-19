@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title >
+        <span matTooltip="Click to change"  (click)="changeProductNameDialog()" >{{item.productName | titlecase}}</span>
+      </mat-card-title>
+    </mat-card-header>
+
+    <img  matTooltip="Click to change" src="{{item.imgURL}}" class="example-card" alt="Photo of a Shiba Inu">
+
+    <mat-card-content (click)="changeProductDescriptionDialog()">
+      <p  matTooltip="Click to change">
+        {{item.productDescription}}
+      </p>
+    </mat-card-content>
+    
+    <mat-card-actions fxLayout="column" fxLayoutAlign="start start">
+      <button  matTooltip="Click to change"  (click)="changePriceDialog()" mat-button >Price: {{item.price|currency}}</button>
+      <div *ngIf="item.rating">
+        <mat-icon  *ngFor="let index of numberOfStars" color="accent">{{getProperRatingStar(item.rating,index)}}</mat-icon>
+      </div>
+      <mat-card-subtitle *ngIf="!item.rating">No raiting yet</mat-card-subtitle> 
+    </mat-card-actions>
+  </mat-card>
+

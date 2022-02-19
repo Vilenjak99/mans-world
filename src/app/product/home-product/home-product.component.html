@@ -1,0 +1,17 @@
+<div *ngIf="product$ | async as product" fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="47" id="img">
+        <img src="{{product.imgURL}}" alt="Product image">
+    </div>
+
+    <div fxFlex="50"  fxLayout="column"  id="product-content">
+        <h1 fxLayoutAlign="center">{{product.productName | titlecase}}</h1>
+        <div fxLayout="row">
+            <mat-icon  *ngFor="let index of numberOfStars" color="accent">{{getProperRatingStar(product.rating,index)}}</mat-icon>
+            <p fxLayoutAlign="center center" *ngIf="!product.rating">No raiting yet</p>
+            <p fxLayoutAlign="center center" *ngIf="product.rating">{{product.rating}} out of 5 stars based on nuberOfReviews reviews</p>
+        </div>
+        <span>{{product.price | currency:"RSD"}}</span>
+        <p>{{product.productDescription}}</p>
+        <button mat-raised-button color="primary" (click)="addToCart(product)">ADD TO CART</button>
+    </div>
+</div>

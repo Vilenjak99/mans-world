@@ -1,0 +1,49 @@
+<div fxLayout="{{orientation}}" fxLayoutAlign="{{xElPos}} {{yElPos}}" fxLayoutGap="{{spacingBetwElements}}px">
+            
+            <button [routerLink]="'/home'" fxLayoutAlign="center center" *ngIf="!showSrch" (click)="showSrch=!showSrch" mat-icon-button >
+                <mat-icon  >{{navElements[0].img}}</mat-icon> 
+            </button>
+       
+        <input #srchBar matInput (keydown)="srch($event)" (mouseover)="srchBar.focus()" (mouseleave)="showSrch=!showSrch" *ngIf="!!showSrch" type="search" id="srchBar">
+
+        <a [matMenuTriggerFor]="account" #menuTrigger="matMenuTrigger" fxLayoutAlign="start center">          
+            <button mat-icon-button >
+                <mat-icon  >{{navElements[1].img}}</mat-icon> 
+            </button>
+        </a>
+        <a  fxLayoutAlign="start center" (click)="openShoppingCartDialog()">          
+            <button mat-icon-button >
+                <mat-icon [matBadge]="cartNumberOfItems$|async"  >{{navElements[2].img}}</mat-icon> 
+            </button>
+        </a>      
+</div>
+
+<mat-menu [hasBackdrop]="false" #account="matMenu">
+    <div fxLayout="column" fxLayoutAlign="start" (mouseleave)="closeAccountMenu()">
+        <a [routerLink]="'/auth'" *ngIf="!userSingedIn">
+            <button  mat-menu-item>
+                <mat-icon>login</mat-icon>Login
+            </button>
+        </a>
+        <div *ngIf="userSingedIn" fxLayout="column" fxLayoutAlign="start center">
+          <a (click)="logout();" >
+            <button mat-menu-item>
+                <mat-icon>logout</mat-icon>Logout
+            </button>
+            </a>
+            <a [routerLink]="'/display-products/my-products'">
+                <button mat-menu-item>
+                    <mat-icon>inventory</mat-icon>My products
+                </button>
+            </a>
+            <a (click)="openOrdersDialog();">
+                <button mat-menu-item>
+                    <mat-icon>list_alt</mat-icon>Orders
+                </button>
+            </a>  
+        </div>
+        
+
+        
+    </div>
+</mat-menu>

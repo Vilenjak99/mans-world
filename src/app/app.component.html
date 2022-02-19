@@ -1,0 +1,29 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="false">
+      <div fxLayout="{{orientation}}" *ngIf="!!resize">
+        <app-navigation (clickSideNavEl)="sidenav.close()" [orientation]="orientation" [navElements]="leftNavElements" [xElPos]="'start'" [yElPos]="'start'"></app-navigation>
+      </div>
+      
+    </mat-sidenav>
+  
+    <mat-sidenav-content (window:resize)="onResize($event)">
+      <mat-toolbar fxLayoutAlign="center center">
+        
+        <div id="nav"  fxLayout="row" fxLayoutAlign="start center">
+          <button *ngIf="orientation=='column'" mat-icon-button ripple (click)="sidenav.toggle()" >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <app-navigation *ngIf="!resize"  [orientation]="orientation" [navElements]="leftNavElements" [xElPos]="'start'"></app-navigation>
+          <app-navigation-right fxFlex="100" [orientation]="'row'" [navElements]="rightNavElements" [xElPos]="'end'" [spacingBetwElements]="'0'"></app-navigation-right>
+        </div>
+  
+      </mat-toolbar>
+      <app-tabs-nav></app-tabs-nav>
+      <div class="routerComponentDiv">
+        <router-outlet></router-outlet>
+      </div>
+      
+      
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>

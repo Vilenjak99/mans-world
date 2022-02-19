@@ -1,0 +1,33 @@
+<div *ngIf="products$| async as products " fxLayout="column">
+  <div *ngIf="products.length">
+    <mat-grid-list gutterSize="10px" [cols]="breakpoint" (window:resize)="onResize()" rowHeight="2.6:4">
+      <mat-grid-tile *ngFor="let product of products ">
+        <app-product-card *ngIf="!subCategory" [item] ="product"></app-product-card>
+        <app-my-product-card *ngIf="subCategory" [item] = "product"></app-my-product-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+    <mat-paginator fxLayoutAlign="center"
+      [length]="products.length"
+      [pageSize]="this.pageSize"
+      [pageSizeOptions]="this.pageSizeOptions"
+      (page)="OnPageChange(products,$event)">
+    </mat-paginator>
+  </div>
+  
+  <div *ngIf="!products.length">
+    <p >You dont have any products..</p>
+    <p>Try to <a [routerLink]="'/add product'">add product</a></p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

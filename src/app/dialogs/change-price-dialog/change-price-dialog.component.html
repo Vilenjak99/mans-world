@@ -1,0 +1,14 @@
+<section>
+    <h1 mat-dialog-title>Change price</h1>
+    <mat-dialog-content fxLayout="column">
+        Previous price: {{data.price}}
+        <mat-form-field>
+            <mat-label>New price</mat-label>
+            <input #price matInput type="number">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button" [mat-dialog-close]="data.price">Close</button>
+        <button class="mat-raised-button mat-primary" [mat-dialog-close]="price.value" >Save</button>
+    </mat-dialog-actions>
+</section>

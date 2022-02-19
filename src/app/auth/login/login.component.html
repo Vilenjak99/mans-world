@@ -1,0 +1,43 @@
+<section>
+    <form #f="ngForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="7px">
+        <h1>Login</h1>
+        <mat-form-field class="authInputs">
+            <input 
+            #username
+            type="email" 
+            ngModel 
+            matInput 
+            placeholder="Email" 
+            email
+            required
+            name="email"
+            >
+        </mat-form-field>
+
+        <mat-form-field class="authInputs">
+            <input
+            #psw
+            type="password" 
+            required 
+            ngModel 
+            matInput 
+            placeholder="Password"
+            name="password"
+            >
+        </mat-form-field>
+        <span *ngIf="!f.valid && f.touched">Neispravno uneti podaci</span>
+
+        <button type="submit"  mat-raised-button color="accent">SIGN IN</button>
+        <button type="button" mat-stroked-button (click)="authService.googleAuth()"> Log in with Google </button>
+
+        <div>
+            <span>Forgot password? | </span>
+            <a [routerLink]="'/auth/'+'forgot-password'">Recover</a>
+        </div>
+        <div>
+            <span>Dont have account? | </span>
+            <a [routerLink]="'/auth/'+'register'">Register</a>
+        </div>
+        
+    </form>
+</section>

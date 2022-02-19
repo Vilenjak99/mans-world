@@ -1,0 +1,59 @@
+<button mat-button [matMenuTriggerFor]="footwear" (mouseenter)="closeOpenedTabs()" #menuTrigger1="matMenuTrigger" >Foowear</button>
+<button mat-button [matMenuTriggerFor]="accessories" (mouseenter)="closeOpenedTabs()" #menuTrigger2="matMenuTrigger">Clothes</button>
+<button mat-button [matMenuTriggerFor]="accessories" (mouseenter)="closeOpenedTabs()" #menuTrigger3="matMenuTrigger">Accessories</button>
+
+
+<!-- 
+  Pokusaj da se dinamicki napravi
+
+  <mat-menu [hasBackdrop]="false" *ngFor="let element of elements; let i = index" #element.name="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="subel.name" *ngFor="let subEl of element">{{subEl.name}}</button>
+</mat-menu> 
+
+-->
+
+<mat-menu [hasBackdrop]="false" #footwear="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="elegant">Elegant</button>
+  <button mat-menu-item [matMenuTriggerFor]="lifestyle">Lifestyle</button>
+</mat-menu>
+
+<mat-menu  [hasBackdrop]="false" #elegant="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="shoes" >Shoes</button>
+  <button mat-menu-item [matMenuTriggerFor]="boots" >Boots</button>
+</mat-menu>
+
+<mat-menu  [hasBackdrop]="false" #lifestyle="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="athletic_shoes">Athletic shoes</button>
+  <button mat-menu-item >Casual shoes</button>
+  <button mat-menu-item >Flip flops</button>
+</mat-menu>
+
+<mat-menu  [hasBackdrop]="false" #athletic_shoes="matMenu">
+  <button mat-menu-item >Basketball</button>
+  <button mat-menu-item >Football</button>
+  <button mat-menu-item >Handball</button>
+  <button mat-menu-item >Tennis</button>
+</mat-menu>
+
+<mat-menu #shoes="matMenu">
+  <button mat-menu-item>Derby</button>
+  <button mat-menu-item>Oxford</button>
+  <button mat-menu-item>Brogue</button>
+  <button mat-menu-item>Monk</button>
+  <button mat-menu-item>Loafers</button>
+</mat-menu>
+
+<mat-menu [hasBackdrop]="false" #accessories="matMenu">
+  <button mat-menu-item>Wallets</button>
+  <button mat-menu-item>Belts</button>
+  <button mat-menu-item>Bags</button>
+  <button mat-menu-item>Sunglasses</button>
+  <button mat-menu-item>Ties</button>
+  <button mat-menu-item>Bows</button>
+</mat-menu>
+
+<mat-menu #boots="matMenu">
+  <button mat-menu-item>Chelsea</button>
+  <button mat-menu-item>Chukka</button>
+  <button mat-menu-item>Brogue</button>
+</mat-menu>

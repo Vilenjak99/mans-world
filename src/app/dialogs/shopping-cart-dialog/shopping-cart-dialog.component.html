@@ -1,0 +1,25 @@
+<section *ngIf="products$ | async as products">
+    <h1 mat-dialog-title>Cart</h1>
+    <h2>{{products.length}} items added</h2>
+    <mat-dialog-content *ngFor="let product of products" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
+            <img fxFlex="33" src="{{product.imgURL}}">
+            <span fxFlex="33">{{product.productName}}</span>
+            <span fxFlex="20">{{product.price}}</span>
+            <button fxFlex="5" mat-icon-button (click)="removeCartItem(product)"><mat-icon>close</mat-icon></button>
+        </div>
+        
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button" [mat-dialog-close]>Close</button>
+        <button class="mat-raised-button mat-primary" [mat-dialog-close] (click)="buy(products)" >Buy</button>
+    </mat-dialog-actions>
+</section>
+
+<section *ngIf="products$==null">
+    <h1 mat-dialog-title>There's no items in a cart</h1>
+
+    <mat-dialog-actions>
+        <button class="mat-raised-button" >Close</button>
+    </mat-dialog-actions>
+</section>

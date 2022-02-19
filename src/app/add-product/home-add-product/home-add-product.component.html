@@ -1,0 +1,61 @@
+<div fxLayout="column">
+    <form [formGroup]="formTemplate" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div>
+            <img [src]="defaultImg" width="300px" height="200px">
+        </div>
+        <div>
+            <button type="button" mat-mini-fab matTooltip="Select product image"  (click)="openInput()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <input hidden ngModel (change)="imgInputChange($event)" type="file" id="imgInput"  formControlName="img" accept="image/*">
+        </div>
+        <div fxLayout="column" class="section">
+            <mat-form-field>
+                <input ngModel matInput placeholder="Product name" type="text" formControlName="productName"> 
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" class="section">
+            <mat-form-field>
+                <input ngModel matInput placeholder="Product description" type="text" formControlName="productDescription"> 
+            </mat-form-field>
+        </div>
+        <div fxLayout="column" class="section">
+                <mat-form-field>
+                    <mat-label>Keywords</mat-label>
+                    <mat-chip-list  #chipList aria-label="Keywords selection">
+                        <mat-chip *ngFor="let word of keywords" [selectable]="selectable"
+                                [removable]="removable" (removed)="remove(word)">
+                            {{word}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input formControlName="keywords" placeholder="New keyword..."
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+        </div>
+        
+        
+        <div fxLayout="column" class="section">
+            <h4>Condition</h4>
+            <mat-radio-group ngModel fxLayout="column" aria-label="Select an option" formControlName="condition">
+                <mat-radio-button *ngFor="let type of conditions" value="{{type}}">{{type|titlecase}}</mat-radio-button>
+            </mat-radio-group> 
+        </div>
+        <div class="section">
+            <span>Free shipping</span>
+            <mat-checkbox ngModel formControlName="freeShipping"></mat-checkbox>  
+        </div>
+        
+        <div fxLayout="column" class="section">
+            <mat-form-field>
+                <input ngModel matInput min="0" placeholder="Price" type="number" formControlName="price"> 
+            </mat-form-field>
+        </div>
+        <button type="submit"  mat-raised-button color="accent" >ADD PRODUCT</button>
+    </form>
+    
+</div>
+

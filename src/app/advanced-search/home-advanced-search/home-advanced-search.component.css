@@ -1,0 +1,8 @@
+.section{
+    padding: 0.23em 0.3em;
+    border-top: solid rgba(0, 0, 0, 0.775) 1px;
+}
+.section h4{
+    margin-bottom: 0.23em;
+}
+
